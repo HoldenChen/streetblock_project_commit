@@ -1,3 +1,14 @@
+## Using react-google-maps 第三方库
+`https://tomchentw.github.io/react-google-maps/#introduction`
+
+## 使用recompose 第三方库
+`https://github.com/acdlite/recompose`
+
+
+## 启动服务器
+`npm run start-server`
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -3,15 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
+    "google-maps-react": "^2.0.2",
+    "hapi": "^18.1.0",
+    "node-fetch": "^2.3.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5"
+    "react-google-maps": "^9.4.5",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "recompose": "^0.30.0",
+    "yelp-fusion": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-server": "node src/server/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"

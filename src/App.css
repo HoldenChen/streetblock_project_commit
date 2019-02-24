@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
+    display: flex;
 }
 
 .App-logo {
@@ -8,26 +11,130 @@
   pointer-events: none;
 }
 
-.App-header {
+/**
+ *  css for map and filter
+ *
+*/
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+}
+
+ .wrapper .list {
+    flex: 1;
+    order: 1;
+    margin:0;
+     padding: 0;
+     backgroud:#333333;
+     border-right: 2px solid #1BCAFF;
+ }
+
+ .wrapper .list ul {
+     font-size: 1.5em;
+     padding: 0;
+     margin: 0;
+ }
+
+ .wrapper .list a {
+     color: #333333;
+     text-decoration: none;
+ }
+
+ .wrapper .list li {
+     list-style-type: none;
+     padding: 10px 20px;
+ }
+
+ .content {
+     flex:3;
+     order: 2;
+     position:relative;
+     min-height: 100%;
+ }
+
+ /**end*/
+
+.filter_input {
+    width: 100%;
+    padding: 20px 20px 20px 60px;
+    background-image: url('./icons/search.svg');
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: 1.1em;
+    font-size: 1.1em;
+    border: 0;
+    outline: none;
+}
+
+.filter_btn {
+    color: white;
+    background-color: #1BCAFF;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+.filter_msg_container_div{
+    text-align: center;
+}
+
+.filter_result_msg_span {
+    color: azure;
+}
+
+
+.address_filter{
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height : 100vh;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
+.filter_wrapper_div{
+    float: left;
+    height: 100%;
+    width: 30%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.map_wrapper_div{
+    float: left;
+    height: 100%;
+}
+
+p {
+  color: aliceblue;
+}
+
+ol {
+  list-style-type: none;
+}
+
+.map_container{
+
+}
+
+
+@media only screen and (max-width: 600px){
+
+  .filter_wrapper_div{
+    width:180px
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+    .filter_input {
+        width: 65%;
+        padding: 20px 20px 20px 30px;
+        background-image: url('./icons/search.svg');
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: 1em;
+        font-size: 1em;
+        border: 0;
+        outline: none;
+    }
+
+
 }
