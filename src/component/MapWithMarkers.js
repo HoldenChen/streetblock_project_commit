@@ -34,7 +34,9 @@ class WithMarkers extends Component {
                             fetchApiComplete : true
                         })
                     }
-            )
+            ).catch( e => {
+                alert(`${e}  please try latter`)
+        })
     }
 
 
@@ -55,7 +57,7 @@ class WithMarkers extends Component {
     };
 
     render() {
-        if (!this.props.loaded) return <div>Loading...</div>;
+        if (!this.props.loaded) return <div>Something Wrong ,pls check your network. For more information,see Console output.</div>
         const { markers } = this.state
         const {filtered_markers} = this.props
         return (
@@ -111,8 +113,8 @@ class WithMarkers extends Component {
                     <div>
                         {
                             this.state.fetchApiComplete && <div>
-                                <p>{this.state.foursquareVenue.name}</p>
-                                <p>地址：{this.state.foursquareVenue.location.address}</p>
+                                <p > <h3 className='detail_text_color'>{this.state.foursquareVenue.name}</h3></p>
+                                <p className='detail_text_color'>地址：{this.state.foursquareVenue.location.address}</p>
                                 <a href={this.state.foursquareVenue.canonicalUrl}>在 foursquare 上查看</a>
                             </div>
                         }

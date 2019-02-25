@@ -10,6 +10,10 @@ class FilterComponent extends Component {
     }
 
 
+    componentDidMount(){
+
+    }
+
     updateQuery = (key) => {
         const { filter_markers ,filter_persist_datas } = this.props
         console.log(filter_markers)
@@ -38,11 +42,30 @@ class FilterComponent extends Component {
         this.updateQuery('')
     }
 
+    updatemarkerByKeyBoardAndClicked = (location) => {
+        let markers = []
+        markers.push(location)
+        this.props.updateMapMarker(markers)
+}
+
+    handleItemClick = (location) => {
+        this.updatemarkerByKeyBoardAndClicked(location)
+    }
+
+    handleItemOnkeyDown = (event,location) => {
+
+        if(event.keyCode === 13){
+            this.updatemarkerByKeyBoardAndClicked(location              )
+        }
+
+    }
+
     render(){
 
         const { query  } = this.state
         const { filter_persist_datas } = this.props
         let showingLocations
+        console.log('hello: '+query.length)
         if(query){
             const match = new RegExp(escapeRegExp(query),'i')
             showingLocations = filter_persist_datas.filter(
@@ -60,6 +83,7 @@ class FilterComponent extends Component {
                         value = {query}
                         onChange={ (event) => this.updateQuery(event.target.value)}
                         placeholder= 'Search Location'
+                        aria-label='filter the locations by input words'
                     />
                 </div>
                 {
@@ -74,9 +98,15 @@ class FilterComponent extends Component {
                     {
                         showingLocations.map(
                             (location) => (
-                                <li key = {location.location_id} >
+                                <li key = {location.location_id}
+                                    tabIndex='0'
+                                    role='option'
+                                    aria-selected='false'
+                                    onClick={(event) => this.handleItemClick(location)}
+                                    onKeyDown={(event) => this.handleItemOnkeyDown(event,location)}
+                                >
                                     <div>
-                                        <p>{location.location_title}</p>
+                                        <p className='filter_list_p'>{location.location_title}</p>
                                     </div>
                                 </li>
                             )

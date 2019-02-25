@@ -10,7 +10,8 @@ class App extends Component {
         this.setState({
             map_markers: [] ,
             persist_datas :[],
-            filtered_markers : []
+            filtered_markers : [],
+            showingSidebar : true
         })
     }
 
@@ -19,6 +20,16 @@ class App extends Component {
             filtered_markers : filtered_locations
         })
     }
+
+
+    toggleSideBar = () => {
+        const {showingSidebar}  = this.state
+          this.setState(
+              {
+                  showingSidebar : !showingSidebar
+              }
+          )
+   }
 
     componentDidMount() {
         const url = [
@@ -45,18 +56,22 @@ class App extends Component {
       <div className="container">
 
           <div className='wrapper'>
-              <div className='filter_wrapper_div'>
-                  <FilterComponent
-                      filter_markers = {this.state.map_markers }
-                      filter_persist_datas = {this.state.persist_datas}
-                      {...this.props}
-                      updateMapMarker = {locations => this.updateMarkerByQuery(locations)}/>
-              </div>
+              {
+                  this.state.showingSidebar ? <div className='filter_wrapper_div'>
+                      <FilterComponent
+                          filter_markers = {this.state.map_markers }
+                          filter_persist_datas = {this.state.persist_datas}
+                          {...this.props}
+                          updateMapMarker = {locations => this.updateMarkerByQuery(locations)}/>
+                  </div> : <div></div>
+              }
 
               <div className='content'>
                   <Container
                       markers = {this.state.map_markers}
-                      filtered_markers = {this.state.filtered_markers} />
+                      filtered_markers = {this.state.filtered_markers}
+                      toggle = {()=>this.toggleSideBar()}
+                  />
               </div>
           </div>
 
